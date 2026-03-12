@@ -58,7 +58,6 @@ print(fac(5))
 ```
 rank_per = list(permutations(["가","나","다","라","마","바"],2))
 rank_per_num = len(rank_per)
-
 ```
 
 학생들의 이름은 자유롭게 설정하여도 상관 없습니다.
@@ -82,7 +81,6 @@ rank_per_num = len(rank_per)
 ```
 rank_com = list(combinations(["가","나","다","라","마","바"],2))
 rank_com_num = len(rank_com)
-
 ```
 
 학생들의 이름은 자유롭게 설정하여도 상관 없습니다.
@@ -173,7 +171,6 @@ P(B|O) = P(B, O)/P(O) = P(B)/P(O) = 1/3
 ```
 def random_answer():
     return random.choice(["A", "B"])
-
 ```
 
 이를 for 문과 if문을 활용하여 30명의 응답을 알아보고, 2번째 질문에 A라 응답한 학생수를`answer_Q2`,
@@ -192,7 +189,6 @@ for i in range(30):
         answer_Q1andQ2 += 1
     if Q2 == "A" or Q1 == "A":
         answer_Q1orQ2 += 1
-
 ```
 
 저장한 값을 바탕으로 P(B|A), P(B|O) 를 계산해 print 해보겠습니다.
@@ -200,7 +196,6 @@ for i in range(30):
 ```
 print( "P(Q1 and Q2 | Q2 ):", answer_Q1andQ2/answer_Q2)
 print( "P(Q1 and Q2 | Q1 or Q2 ):", answer_Q1andQ2/answer_Q1orQ2)
-
 ```
 
 두 물음에 대한 대답은 독립일까요? 아닐까요?
@@ -220,7 +215,6 @@ print( "P(Q1 and Q2 | Q1 or Q2 ):", answer_Q1andQ2/answer_Q1orQ2)
 ```
 Die6 = Die('Die6', 6)
 Die6_dict = density(Die6).dict
-
 ```
 
 1. `given` 으로 조건을 주어 다시 확률변수를 만들어보겠습니다.
@@ -247,7 +241,6 @@ Q1. 확률질량함수
 ```
 n, p = 10,  0.3
 stat_bin = sp.stats.binom(n, p)
-
 ```
 
 1. 이에 대한 확률질량함수를 그려보면
@@ -255,7 +248,6 @@ stat_bin = sp.stats.binom(n, p)
 ```
 x_axis = np.arange(n + 1) 
 plt.bar(x_axis, stat_bin.pmf(x_axis))
-
 ```
 
 1의 확률을 0.3 으로 해뒀기 때문에 1이 3번 나오는 것이 그래프에서 가장 높은 질량을 차지하고 있는 것을 확인할 수 있습니다.
@@ -266,7 +258,6 @@ Q2. 누적분포함수
 ```
 x_axis = np.arange(n + 1) 
 plt.bar(x_axis, stat_bin.cdf(x_axis))
-
 ```
 
 Q3. 랜덤표본 추출
@@ -277,14 +268,12 @@ X는 성공의 횟수이므로, x = 0,1,…,n이 될 수 있습니다.
 
 ```
 np.random.seed(seed = 0)
-
 ```
 
 `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
 
 1. 랜덤표본 추출
    표본을 추출하여 `random_bin` 에 저장해 확인해보겠습니다.
-
 ```
 random_bin = np.random.binomial(n = 10,p=0.3, size = 50)
 
@@ -297,7 +286,6 @@ random_bin = np.random.binomial(n = 10,p=0.3, size = 50)
 
 ```
 bin_mean = np.mean(random_bin)
-
 ```
 
 10번의 시도에 따른 성공의 확률을 0.3 으로 줬으니까, 평균도 3과 매우 가까운 것을 확인하실 수 있습니다.
@@ -319,7 +307,6 @@ Q1. 확률질량함수
 ```
 [M, n, N] = [30, 5, 10]
 stat_hyp = sp.stats.hypergeom(M, n, N)
-
 ```
 
 1. 위의 `pmf`로 확률질량함수를 확인해보겠습니다.
@@ -339,7 +326,6 @@ Q2. 누적분포함수
 ```
 x_axis = np.arange(n+1)
 plt.bar(x_axis, stat_hyp.cdf(x_axis))
-
 ```
 
 ### Q3. 샘플링
@@ -351,7 +337,6 @@ X는 성공의 횟수이므로, x = 0,1,…,n이 될 수 있습니다.
 
 ```
 np.random.seed(seed = 0)
-
 ```
 
 `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
@@ -361,7 +346,6 @@ np.random.seed(seed = 0)
 
 ```
 random_hyp = np.random.hypergeometric(ngood = 5, nbad= 25, nsample=10, size = 50)
-
 ```
 
 ngood 에 우리가 관심이 있는 불량품의 개수를 넣어야 합니다. 영어가 bad이라고 해서 불량품의 개수를 bad 에 넣으면 반대의 결과가 나옵니다.
@@ -371,7 +355,6 @@ ngood 에 우리가 관심이 있는 불량품의 개수를 넣어야 합니다.
 
 ```
 hyp_mean = np.mean(random_hyp)
-
 ```
 
 평균이 2와 가까운 것을 확인하실 수 있습니다. 10개를 검사했을 때 2개정도의 불량품을 찾아낼 수 있습니다.
@@ -392,7 +375,6 @@ hyp_mean = np.mean(random_hyp)
 
 ```
 stat_uni = sp.stats.uniform()
-
 ```
 
 1. 위의 `pdf`로 확률밀도함수를 확인해보겠습니다.
@@ -400,7 +382,6 @@ stat_uni = sp.stats.uniform()
 ```
 x_axis = np.linspace(0, 1, 100)
 plt.bar(x_axis, stat_uni.pdf(x_axis))
-
 ```
 
 0과 1 사이의 구간에 속하는 값을 가질 확률이 동일한 분포이므로 직사각형의 형태가 나옵니다.
@@ -412,7 +393,6 @@ plt.bar(x_axis, stat_uni.pdf(x_axis))
 ```
 x_axis = np.linspace(0, 1, 100)
 plt.bar(x_axis, stat_uni.cdf(x_axis))
-
 ```
 
 +`np.linspace(0, 1, 100)` 는 0부터 1까지의 구간에서 **100개**의 숫자를 동일한 크기만큼 뽑아주는 함수입니다.
@@ -425,7 +405,6 @@ plt.bar(x_axis, stat_uni.cdf(x_axis))
 
 ```
 np.random.seed(seed = 0)
-
 ```
 
 `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
@@ -435,7 +414,6 @@ np.random.seed(seed = 0)
 
 ```
 random_uni = np.random.uniform(0,1,100)
-
 ```
 
 0부터 1까지의 구간에서 **100개**의 샘플을 추출합니다.
@@ -445,7 +423,6 @@ random_uni = np.random.uniform(0,1,100)
 
 ```
 uni_mean = np.mean(random_uni)
-
 ```
 
 평균이 0.5와 매우 가까운 것을 확인하실 수 있습니다.
@@ -466,7 +443,6 @@ mu 가 0 이고 sigma 가 1인 정규분포인 표준정규분포 X~N(0, 1) 에 
 
 ```
 stat_nor = sp.stats.norm(0,1)
-
 ```
 
 1. 위의 `pdf`로 확률밀도함수를 확인해보겠습니다.
@@ -474,7 +450,6 @@ stat_nor = sp.stats.norm(0,1)
 ```
 x_axis = np.linspace(-3, 3, 100)
 plt.bar(x_axis, stat_nor.pdf(x_axis))
-
 ```
 
 평소에 많이 보시던 종형의 분포 형태가 나옵니다.
@@ -486,7 +461,6 @@ plt.bar(x_axis, stat_nor.pdf(x_axis))
 ```
 x_axis = np.linspace(-3, 3, 100)
 plt.bar(x_axis, stat_nor.cdf(x_axis))
-
 ```
 
 +`np.linspace(-3, 3, 100)` 는 -3부터 3까지의 구간에서 **100개**의 숫자를 동일한 크기만큼 뽑아주는 함수입니다. 표준정규분포의 그래프를 많이 보셨던 형태와 유사하게 하기 위해 임의로 -3,3 을 설정했습니다.
@@ -499,7 +473,6 @@ plt.bar(x_axis, stat_nor.cdf(x_axis))
 
 ```
 np.random.seed(seed = 0)
-
 ```
 
 `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
@@ -509,7 +482,6 @@ np.random.seed(seed = 0)
 
 ```
 random_nor = np.random.normal(0,1,100)
-
 ```
 
 표준정규분포에서 **100개**의 샘플을 추출합니다.
@@ -521,7 +493,6 @@ random_nor = np.random.normal(0,1,100)
 
 ```
 nor_mean = np.mean(random_nor)
-
 ```
 
 평균이 0과 매우 가까운 것을 확인하실 수 있습니다.
@@ -544,7 +515,6 @@ nor_mean = np.mean(random_nor)
 
 ```
 np.random.seed(seed = 0)
-
 ```
 
 `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
@@ -555,7 +525,6 @@ np.random.seed(seed = 0)
 
 ```
 random_ber = np.random.binomial(n = 1,p=0.5, size = 50)
-
 ```
 
 그리고 추출한 표본 중 0이 아닌 개수, 여기서는 1의 개수를 뽑아 `n_ber` 에 저장해보겠습니다.
@@ -564,7 +533,6 @@ random_ber = np.random.binomial(n = 1,p=0.5, size = 50)
 
 ```
 n_ber = np.count_nonzero(random_ber)
-
 ```
 
 1의 값은 30개입니다. 그렇다면 p = 0.6 일까요? 이를 검정해보겠습니다.
@@ -574,7 +542,6 @@ n_ber = np.count_nonzero(random_ber)
 
 ```
 binom_test = sp.stats.binom_test(n_ber, 50)
-
 ```
 
 결과값인 유의확률이 0.05 보다 매우 크므로 귀무가설을 기각할 수 없습니다. 그러므로 새로 출시된 치킨을 선호하는 것은 후라이드파와 양념파에 상관이 없습니다. 즉, “새로 출시된 치킨을 선호하는 사람은 양념파이다” 라고 주장할 수 없습니다.
@@ -597,7 +564,6 @@ binom_test = sp.stats.binom_test(n_ber, 50)
 
    ```
    np.random.seed(seed = 0)
-   
    ```
 
    `seed`는 랜덤으로 표본추출 등을 할 때 재현성을 갖추기 위해 설정합니다.
@@ -607,14 +573,12 @@ binom_test = sp.stats.binom_test(n_ber, 50)
 
    ```
    random_nor = np.random.normal(100,5,10)
-   
    ```
 
    추출한 표본으로 평균을 계산해 `nor_mean` 에 저장해보겠습니다.
 
    ```
    nor_mean = np.mean(random_nor)
-   
    ```
 
    이를 확인해보니, 103.69가 나왔습니다. 그렇다면 대립가설인 mu != 100 이 맞을까요?
@@ -625,7 +589,6 @@ binom_test = sp.stats.binom_test(n_ber, 50)
    def ztest(stat, mu, sigma):
            z = (stat.mean() - mu) / (sigma / np.sqrt(len(stat)))
            return (2 * (1-sp.stats.norm.cdf(z)))
-   
    ```
 
 4. 모평균 가설 검정
@@ -633,7 +596,6 @@ binom_test = sp.stats.binom_test(n_ber, 50)
 
    ```
    mu_test = ztest(random_nor, 100, 5)
-   
    ```
 
 5. 귀무가설과 대립가설
@@ -645,4 +607,5 @@ binom_test = sp.stats.binom_test(n_ber, 50)
 - 이전 버전의 코드와 지시사항으로 촬영된 영상에서는 `ztest` 함수를 직접 사용해보는 부분에서 표준편차(sigma) 값을 10으로 사용하고 있습니다.
 - 이는 앞서 표준편차를 5로 가정한 부분과 다르기 때문에 이렇게 나온 유의확률이 0.05보다 크다는 것은 무의미한 결과입니다.
 - 따라서 `ztest` 함수에서 사용하는 표준편차는 **현재는 5로 수정되어 있습니다.**
+
 - 그리고 초기 10개의 표본값으로 귀무가설이 기각된 것 또한 표준편차와 관련된 부분이 아니라 충분한 개수로 샘플링 되지 못한 것이 문제라는 점 유의하세요.
